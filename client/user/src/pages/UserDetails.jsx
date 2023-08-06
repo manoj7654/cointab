@@ -11,6 +11,7 @@ const UserDetails = () => {
   const [filter,setFilter]=useState("")
   const [page,setPage]=useState(1)
 const [result,setResult]=useState("")
+const [country, setCountry] = useState(null)
   async function GetData(query) {
     setLoading(true)
     try {
@@ -20,7 +21,7 @@ const [result,setResult]=useState("")
      
       setResult(total)
     setData(res.results)
-    console.log(res)
+    // console.log(res)
     setLoading(false)
     } catch (error) {
       console.log(error);
@@ -34,13 +35,17 @@ const [result,setResult]=useState("")
   if(filter){
     query+=`gender=${filter}`
   }
+  if(country){
+    query+=`&country=${country}`
+  }
+
   if(page){
     query+=`&page=${page}`
  
   }
   GetData(query)
 
- },[filter,page])
+ },[filter,page,country])
 
 const handleChange=(value)=>{
 setPage(page+value)
@@ -60,6 +65,20 @@ setPage(page+value)
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
+      <label htmlFor="">Country : </label>
+      <select name="" onChange={(e)=>setCountry(e.target.value)} >
+        <option value="#">select country</option>
+        <option value="India">India</option>
+        <option value="Ireland">Ireland</option>
+        <option value="Australia">Australia</option>
+        <option value="Germany">Germany</option>
+        <option value="Iran">Iran</option>
+        <option value="New Zealand">New Zealand</option>
+        <option value="Turkey">Turkey</option>
+        <option value="Brazil">Brazil</option>
+        <option value="France">France</option>
+        <option value="Netherlands">Netherlands</option>
+      </select>
     <table>
         <thead>
           <tr>
@@ -72,7 +91,7 @@ setPage(page+value)
             <th>State</th>
             <th>Country</th>
             <th>Postcode</th>
-            <th>Dob_Age</th>
+            <th>Age</th>
             <th>Picture</th>
           </tr>
         </thead>
