@@ -9,6 +9,10 @@ const { userRouter } = require("./routes/userRoutes");
 // importing dotenv for accessing data from .env file
 require("dotenv").config()
 
+// importing cors
+const cors=require("cors")
+app.use(cors())
+
 app.get("/",(req,res)=>{
     res.send("Home page of this api")
 })

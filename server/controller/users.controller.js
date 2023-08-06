@@ -64,7 +64,7 @@ const fetchDataAndStoreData = async(req,res)=>{
         // Reset the flag to indicate the operation is complete
         isFetchingData = false;
    
-    res.status(200).json({ message: 'Users fetched and stored in Database successfully successfully.' });
+    res.status(200).json({ message: 'Users fetched and stored in Database successfully.' });
     } catch (error) {
       console.error('An error occurred while fetching and storing users:', error);
       res.status(500).json({ "message": 'Getting while fetching and storing users.' });
@@ -75,8 +75,38 @@ const fetchDataAndStoreData = async(req,res)=>{
 // Retrieve all data from the database
 const getAllUsers  = async (req, res) => {
   try {
-    const result = await UserModel.findAll();
-    res.status(200).json(result);
+    
+      let page = req.query.page || 1;
+      const { gender, country } = req.query;
+  
+      // Prepare the filtering options based on the query parameters
+      const filterData = {};
+      if (gender) {
+        filterData.gender = gender;
+      }
+      if (country) {
+        filterData.country = country;
+      }
+  
+      // Fetch the paginated data using Sequelize's findAll with filtering and pagination options
+      const result = await UserModel.findAndCountAll({
+        where: filterData,
+        limit: 10,
+        offset: (page - 1) * 10,
+      });
+  
+      let Total_Page=Math.ceil(result.count/10)
+      res.set("X-Total-Count",Total_Page)
+
+
+      const total = {
+        currentPage: page,
+        total_pages: Total_Page,
+        results: result.rows,
+      };
+  
+    
+    res.status(200).json(total);
   } catch (error) {
     console.error('An error occurred while retrieving users:', error);
     res.status(500).json({"message":"Getting error while retrieving users."})
@@ -96,53 +126,4 @@ const removeAllUsers = async (req, res) => {
 };
 
 
-// pagination
-const pagination=async(req,res)=>{
-    try {
-
-        let page=req.query.page||1
-    
-        let result= await UserModel.findAndCountAll({limit:10,offset:(page-1)*10})
-        let total={
-            currentPage:page,
-            pages:Math.ceil(result.count/10),
-            results:result.rows
-        }
-        res.status(200).json(total)
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ "message": "Getting error while paginating" })
-    }
-}
-
-// filtering data 
-const filterData=async(req,res)=>{
-    try {
-        const {  gender,country } = req.query;
-        
-        // Prepare the filtering options based on the query parameters
-        const filterData = {};
-      
-        if (gender) {
-            filterData.gender = gender;
-        }
-        if(country){
-            filterData.country=country
-        }
-
-        
-        // finding data with the help of query
-        const result = await UserModel.findAll({ where: filterData });
-
-        res.status(200).json(result);
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({"message":"Getting error while filtering data"})
-    }
-}
-
-
-
-
-
-module.exports={getAllUsers,fetchDataAndStoreData,removeAllUsers,pagination,filterData}
+module.exports={getAllUsers,fetchDataAndStoreData,removeAllUsers}
