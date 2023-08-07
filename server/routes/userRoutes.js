@@ -14,8 +14,6 @@ userRouter.get("/fetchData",fetchDataAndStoreData)
 // deleting all users from database
 userRouter.delete("/removeAllUsers",removeAllUsers)
 
-// for pagination
-// userRouter.get("/pagination",pagination)
 
 
 
