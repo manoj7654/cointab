@@ -1,4 +1,4 @@
- # Random Users App
+# User Management System
 
 ## Introduction
 This efficient user management system, developed using Node.js and an SQL database, integrates with the (https://randomuser.me/) API to fetch and store bulk user data. The website features buttons to fetch users, delete records, and a paginated User Detail Page with filtering options. This user-friendly application simplifies data management and organization for diverse business needs.
@@ -100,7 +100,7 @@ This (https://randomuser.me/) APIs is used to fetch random user data for populat
 interactions.
 * Reactjs: For frontent
 
-## Screenshots (Optional)
+## Screenshots 
 
 `Home Page`
 ![Screenshot (586)](https://github.com/manoj7654/cointab/assets/107467981/c7a36e66-25b6-444a-a7f2-01677cd014f6)
@@ -119,7 +119,7 @@ interactions.
  `Filter by country`
 ![Screenshot (590)](https://github.com/manoj7654/cointab/assets/107467981/86aff483-f808-42b7-8d40-0781d97d94bf)
 
-`After deleting all usere`
+`After deleting all users`
 ![Screenshot (591)](https://github.com/manoj7654/cointab/assets/107467981/ce7732e3-b281-4ad5-9ee6-63f271184b8f)
 
 
