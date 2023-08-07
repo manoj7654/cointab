@@ -66,14 +66,14 @@ const fetchDataAndStoreData = async(req,res)=>{
    
     res.status(200).json({ message: 'Users fetched and stored in Database successfully.' });
     } catch (error) {
-      console.error('An error occurred while fetching and storing users:', error);
-      res.status(500).json({ "message": 'Getting while fetching and storing users.' });
+      console.error('Getting Error while fetching and storing users:', error);
+      res.status(500).json({ "message": 'Getting Error while fetching and storing users.' });
     }
 }
 
 
 // Retrieve all data from the database
-const getAllUsers  = async (req, res) => {
+const AllUsers  = async (req, res) => {
   try {
     
       let page = req.query.page || 1;
@@ -108,7 +108,7 @@ const getAllUsers  = async (req, res) => {
     
     res.status(200).json(total);
   } catch (error) {
-    console.error('An error occurred while retrieving users:', error);
+    console.error('Getting error while retrieving users:', error);
     res.status(500).json({"message":"Getting error while retrieving users."})
   }
 };
@@ -120,10 +120,10 @@ const removeAllUsers = async (req, res) => {
     await UserModel.destroy({ where: {} });
     res.status(200).json({ "message": 'All users deleted successfully.' });
   } catch (error) {
-    console.error('An error occurred while deleting users:', error);
+    console.error('Getting error while deleting users:', error);
     res.status(500).json({ "message": 'Getting error while deleting users.' });
   }
 };
 
 
-module.exports={getAllUsers,fetchDataAndStoreData,removeAllUsers}
+module.exports={AllUsers,fetchDataAndStoreData,removeAllUsers}
