@@ -102,7 +102,25 @@ interactions.
 
 ## Screenshots (Optional)
 
+`Home Page`
+![Screenshot (586)](https://github.com/manoj7654/cointab/assets/107467981/c7a36e66-25b6-444a-a7f2-01677cd014f6)
 
+`User Details Page`
+
+![Screenshot (587)](https://github.com/manoj7654/cointab/assets/107467981/6cba2f17-459d-4063-a3ca-791d9b339a95)
+
+ `Filter by male`
+
+![Screenshot (588)](https://github.com/manoj7654/cointab/assets/107467981/e69ede9d-d878-41f2-bc9f-46ab9d35dc14)
+
+`Filter by female`
+![Screenshot (589)](https://github.com/manoj7654/cointab/assets/107467981/0c5de83d-10c5-492f-bf3d-ce71cedd21be)
+
+ `Filter by country`
+![Screenshot (590)](https://github.com/manoj7654/cointab/assets/107467981/86aff483-f808-42b7-8d40-0781d97d94bf)
+
+`After deleting all usere`
+![Screenshot (591)](https://github.com/manoj7654/cointab/assets/107467981/ce7732e3-b281-4ad5-9ee6-63f271184b8f)
 
 
 
